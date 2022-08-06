@@ -1,0 +1,23 @@
+{
+  "name": "tap-ssc",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/tap-ssc.git"
+  },
+  "author": "nichoth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nichoth/tap-ssc/issues"
+  },
+  "homepage": "https://github.com/nichoth/tap-ssc#readme",
+  "description": "",
+  "devDependencies": {
+    "tap-arc": "^0.3.5",
+    "tape": "^5.5.3"
+  }
+}
