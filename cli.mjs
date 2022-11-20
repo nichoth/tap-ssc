@@ -1,16 +1,6 @@
 #!/usr/bin/env node
 // @ts-check
 
-//
-// take stdin and pipe it to a file at a target location
-//
-// `target` comes from the `ssc build` command
-//
-
-// const tapssc = require('./')
-// var yargs = require('yargs/yargs')
-// const { hideBin } = require('yargs/helpers')
-// const fs = require('node:fs')
 import tapssc from './index.mjs'
 import yargs from 'yargs/yargs'
 import { hideBin } from 'yargs/helpers'
@@ -19,6 +9,9 @@ import path from 'node:path'
 import config from './config.json' assert { type: 'json' }
 // import { spawn } from 'node:child_process'
 import run from 'comandante'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 // [0] is the path to node
@@ -50,6 +43,6 @@ const ws = fs.createWriteStream(target);
 process.stdin
     .pipe(ws)
     .on('close', () => {
-        run('ssc', ['run', '--headless', '.'])
+        run('ssc', ['run', '--headless', '.'], { cwd: __dirname })
             .pipe(process.stdout)
     })
