@@ -1,5 +1,6 @@
 {
   "name": "@nichoth/tap-ssc",
+  "description": "Run tests in a browser environment from the command line",
   "version": "0.0.1",
   "main": "index.js",
   "bin": {
@@ -19,9 +20,13 @@
     "url": "https://github.com/nichoth/tap-ssc/issues"
   },
   "homepage": "https://github.com/nichoth/tap-ssc#readme",
-  "description": "",
   "devDependencies": {
     "tap-arc": "^0.3.5",
     "tape": "^5.5.3"
+  },
+  "dependencies": {
+    "comandante": "^0.0.1",
+    "esbuild": "^0.15.14",
+    "yargs": "^17.6.2"
   }
 }

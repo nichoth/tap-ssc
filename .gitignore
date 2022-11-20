@@ -174,3 +174,4 @@ dist
 
 bundle.js
 example/package-lock.json
+package-lock.json
