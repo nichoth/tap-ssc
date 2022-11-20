@@ -1,5 +1,9 @@
 {
+    "scripts": {
+        "test": "esbuild --bundle test/index.js | tap-ssc"
+    },
     "dependencies": {
-        "tap-ssc": "../"
+        "@nichoth/tap-ssc": "../",
+        "tapzero": "^0.6.1"
     }
 }
