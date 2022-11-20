@@ -2,6 +2,9 @@
   "name": "@nichoth/tap-ssc",
   "version": "0.0.0",
   "main": "index.js",
+  "bin": {
+    "tap-ssc": "./cli.mjs"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "ssc build ."
