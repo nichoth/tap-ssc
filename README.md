@@ -2,6 +2,9 @@
 
 Run tests in a browser environment from the command line
 
+This depends on having the `ssc` command available on your shell. Install it
+[from here](https://sockets.sh/).
+
 ## install
 ```
 npm i -D @nichoth/tap-ssc
