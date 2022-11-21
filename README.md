@@ -1,7 +1,7 @@
 # tap ssc
 Run tests in a browser environment from the command line
 
-This depends on having the `ssc` command available on your shell. Install it
+This depends on having the `ssc` command available in your shell. Install it
 [from here](https://sockets.sh/).
 
 ## install
