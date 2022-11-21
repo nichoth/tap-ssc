@@ -15,7 +15,7 @@ Bundle your client side JS, then pipe it into this tool, which is installed as t
 Your tests will be running in a browser environment, but all tap output will go to the terminal.
 
 ```
-esbuild --bundle test/index.js | npx tap-ssc
+esbuild --bundle test/index.js | tap-ssc
 ```
 
 Use it as a part of `package.json` scripts:
@@ -48,3 +48,4 @@ npx esbuild --bundle test/index.js | npx tap-ssc
 ```
 
 see [this example](https://github.com/nichoth/tap-ssc-example)
+
