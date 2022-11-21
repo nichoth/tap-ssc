@@ -14,9 +14,6 @@ async function main () {
     await fs.writeFile(path.join(process.cwd(), 'config.json'),
         JSON.stringify({ target }, null, 2))
 
-    console.log('**target**', target)
-    console.log('**argv 2**', process.argv[2])
-
     // render process
     await esbuild.build({
         entryPoints: ['src/render/index.js'],
