@@ -1,5 +1,6 @@
 {
   "name": "@nichoth/tap-ssc",
+  "type": "module",
   "description": "Run tests in a browser environment from the command line",
   "version": "0.0.9",
   "main": "index.js",
@@ -7,9 +8,29 @@
     "tap-ssc": "./cli.mjs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standardx -v",
+    "test": "cd example && rm -rf node_modules package-lock.json && npm i && npm test",
+    "test-fail": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-fail",
+    "test-err": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-err",
     "postinstall": "ssc build .",
     "postversion": "git push && git push --tags"
+  },
+  "exports": {
+    "test-context": "./index.mjs"
+  },
+  "dependencies": {
+    "@socketsupply/io": "^0.1.22",
+    "comandante": "^0.0.1",
+    "esbuild": "^0.15.14",
+    "multistream": "^4.1.0",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "standardx": "^7.0.0",
+    "tap-arc": "^0.3.5",
+    "tape": "^5.5.3"
   },
   "repository": {
     "type": "git",
@@ -21,14 +42,10 @@
     "url": "https://github.com/nichoth/tap-ssc/issues"
   },
   "homepage": "https://github.com/nichoth/tap-ssc#readme",
-  "devDependencies": {
-    "tap-arc": "^0.3.5",
-    "tape": "^5.5.3"
-  },
-  "dependencies": {
-    "@socketsupply/ssc-test": "github:socketsupply/ssc-test",
-    "comandante": "^0.0.1",
-    "esbuild": "^0.15.14",
-    "yargs": "^17.6.2"
+  "standardx": {
+    "ignore": [
+      "dist/*",
+      "example/*"
+    ]
   }
 }

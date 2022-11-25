@@ -51,3 +51,10 @@ npx esbuild --bundle test/index.js | npx tap-ssc
 
 see [this example](https://github.com/nichoth/tap-ssc-example)
 
+
+## how does this work?
+We build an `ssc` binary once after you install this package: https://github.com/nichoth/tap-ssc/blob/main/package.json#L11
+
+The `ssc build` script calls [./build.mjs](https://github.com/nichoth/tap-ssc/blob/main/build.mjs), which builds the ssc binary with an html file that links to `bundle.js`.
+
+The package binary, `./cli.js` takes javascript that is piped to `stdin`, and writes it to a file at the right location -- `target + /bundle.js`. Then it runs the ssc binary and pipes the output to `stdout`.

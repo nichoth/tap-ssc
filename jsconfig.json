@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
+    "noEmit": true,
+    "module": "esnext",
+    "strict": false,
+    "moduleResolution": "node16",
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"]
+}
