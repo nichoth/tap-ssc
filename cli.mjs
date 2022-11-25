@@ -4,7 +4,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import config from './config.json' assert { type: "json" }
-import run from 'comandante'
+import { spawn } from 'node:child_process'
 import { fileURLToPath } from 'url'
 import { Transform } from 'readable-stream'
 const __filename = fileURLToPath(import.meta.url)
@@ -33,12 +33,13 @@ const transformer = new Transform({
     }
 })
 
-// need to pipe stdin to a file,
-// then start an `ssc` process
 process.stdin
     .pipe(writeStream)
     .on('close', () => {
-        run('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+        const child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+        child.stdout
             .pipe(transformer)
             .pipe(process.stdout)
+
+        child.stderr.pipe(process.stderr)
     })
