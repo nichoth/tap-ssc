@@ -8,10 +8,8 @@ if (typeof parent?.addEventListener === 'function') {
 }
 
 function onerror (err) {
-    console.log('woooo', err)
     console.error(err.stack || err.reason || err.message || err)
     setTimeout(() => {
-        console.log('prcess', process)
         process.exit(1)
     }, 100)
 }

@@ -7,7 +7,6 @@ import config from './config.json' assert { type: "json" }
 import run from 'comandante'
 import { fileURLToPath } from 'url'
 import { Transform } from 'readable-stream'
-import MultiStream from 'multistream'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -29,12 +28,6 @@ const transformer = new Transform({
             }, 100)
         }
 
-        if (chunk.includes('# error')) {
-            setTimeout(() => {
-                process.exit(1)
-            }, 100)
-        }
-
         this.push(chunk)
         cb()
     }
@@ -42,11 +35,7 @@ const transformer = new Transform({
 
 // need to pipe stdin to a file,
 // then start an `ssc` process
-new MultiStream([
-    fs.createReadStream(__dirname + '/index.mjs'),
-    process.stdin
-])
-// process.stdin
+process.stdin
     .pipe(writeStream)
     .on('close', () => {
         run('ssc', ['run', '--headless', '.'], { cwd: __dirname })

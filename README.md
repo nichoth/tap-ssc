@@ -33,11 +33,8 @@ The test script must exit the process when tests are done. Here we use `testCont
 
 ```js
 // test/index.js
-import tapzero from 'tapzero'
-const { test } = tapzero
-import testContext from '@nichoth/tap-ssc/index.mjs'
-
-testContext(tapzero, { headless: true })
+import { test } from 'tapzero'
+import '@nichoth/tap-ssc/test-context'
 
 test('browser environment', t => {
     t.ok(window, 'window should exist')
@@ -49,7 +46,7 @@ Then in the terminal:
 npx esbuild --bundle test/index.js | npx tap-ssc
 ```
 
-see [this example](https://github.com/nichoth/tap-ssc-example)
+see [this example](https://github.com/nichoth/tap-ssc/blob/main/example/package.json#L2)
 
 
 ## how does this work?
