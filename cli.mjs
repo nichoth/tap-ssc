@@ -13,16 +13,20 @@ const __dirname = path.dirname(__filename)
 const target = path.resolve(path.join(config.target, 'bundle.js'))
 const writeStream = fs.createWriteStream(target)
 
+let child
+
 const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
+            child.kill()
             setTimeout(() => {
                 process.exit(0)
             }, 100)
         }
 
         if (chunk.includes('# fail ')) {
+            child.kill()
             setTimeout(() => {
                 process.exit(1)
             }, 100)
@@ -36,7 +40,7 @@ const transformer = new Transform({
 process.stdin
     .pipe(writeStream)
     .on('close', () => {
-        const child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+        child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
         child.stdout
             .pipe(transformer)
             .pipe(process.stdout)

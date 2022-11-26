@@ -1,5 +1,5 @@
 // @ts-check
-import process from '@socketsupply/io/process.js' 
+import process from '@socketsupply/io/process.js'
 const parent = typeof window === 'object' ? window : globalThis
 
 if (typeof parent?.addEventListener === 'function') {
@@ -7,9 +7,8 @@ if (typeof parent?.addEventListener === 'function') {
     parent.addEventListener('unhandledrejection', onerror)
 }
 
+// fail on uncaught errors
 function onerror (err) {
     console.error(err.stack || err.reason || err.message || err)
-    setTimeout(() => {
-        process.exit(1)
-    }, 100)
+    process.exit(1)
 }
