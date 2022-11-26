@@ -55,3 +55,21 @@ We build an `ssc` binary once after you install this package: https://github.com
 The `ssc build` script calls [./build.mjs](https://github.com/nichoth/tap-ssc/blob/main/build.mjs), which builds the ssc binary with an html file that links to `bundle.js`.
 
 The package binary, `./cli.js` takes javascript that is piped to `stdin`, and writes it to a file at the right location -- `target + /bundle.js`. Then it runs the ssc binary and pipes the output to `stdout`.
+
+## test
+Tests for this module. This will use the `example` directory to install this as a dependency, then run a given test.
+
+A passing test
+```
+npm test | npx tap-arc
+```
+
+A failing test
+```
+npm run test-fail
+```
+
+A test that throws an error
+```
+npm run test-err
+```
