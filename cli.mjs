@@ -19,14 +19,15 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            child.kill()
+            // @TODO -- is there a nicer way than `child.pid + 1` to exit?
+            process.kill(child.pid + 1)
             setTimeout(() => {
                 process.exit(0)
             }, 100)
         }
 
         if (chunk.includes('# fail ')) {
-            child.kill()
+            process.kill(child.pid + 1)
             setTimeout(() => {
                 process.exit(1)
             }, 100)
