@@ -1,5 +1,5 @@
 # tap ssc
-Run tests in a browser environment from the command line
+Run tests in a browser environment from the command line.
 
 This depends on having the `ssc` command available in your shell. Install it
 [from here](https://sockets.sh/).
@@ -27,13 +27,12 @@ Use it as a part of `package.json` scripts:
 },
 ```
 
-The test script must exit the process when tests are done. Here we use `testContext` to do that, exposed at `'@nichoth/tap-ssc/index.mjs'`
-
 ## example
-
 ```js
-// test/index.js
+// example/test/index.js
 import { test } from 'tapzero'
+// test-context listens for any uncaught errors and exits the
+// process on error
 import '@nichoth/tap-ssc/test-context'
 
 test('browser environment', t => {
@@ -56,8 +55,8 @@ The `ssc build` script calls [./build.mjs](https://github.com/nichoth/tap-ssc/bl
 
 The package binary, `./cli.js` takes javascript that is piped to `stdin`, and writes it to a file at the right location -- `target + /bundle.js`. Then it runs the ssc binary and pipes the output to `stdout`.
 
-## test
-Tests for this module. This will use the `example` directory to install this as a dependency, then run a given test.
+## test this module
+This will use the `example` directory to install this as a dependency, then run a given test.
 
 A passing test
 ```
