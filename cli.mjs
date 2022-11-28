@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // @ts-check
 
-import fs from 'node:fs'
+import fs from 'node:fs' // 'node:fs/promises'
 import path from 'node:path'
 import config from './config.json' assert { type: "json" }
 import { spawn } from 'node:child_process'
@@ -38,13 +38,18 @@ const transformer = new Transform({
     }
 })
 
-process.stdin
-    .pipe(writeStream)
-    .on('close', () => {
-        child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
-        child.stdout
-            .pipe(transformer)
-            .pipe(process.stdout)
+fs.readFile(path.join(__dirname, 'index.mjs'), (err, file) => {
+    if (err) throw err
+    writeStream.write(file)
 
-        child.stderr.pipe(process.stderr)
-    })
+    process.stdin
+        .pipe(writeStream)
+        .on('close', () => {
+            child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+            child.stdout
+                .pipe(transformer)
+                .pipe(process.stdout)
+
+            child.stderr.pipe(process.stderr)
+        })
+})
