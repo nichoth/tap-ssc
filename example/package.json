@@ -6,6 +6,7 @@
     },
     "dependencies": {
         "@nichoth/tap-ssc": "../",
+        "esbuild": "^0.15.16",
         "tapzero": "^0.6.1"
     }
 }
