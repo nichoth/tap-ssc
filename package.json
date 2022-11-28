@@ -31,7 +31,11 @@
     "type": "git",
     "url": "git+https://github.com/nichoth/tap-ssc.git"
   },
-  "author": "nichoth",
+  "author": {
+		"name": "nichoth",
+		"email": "nichoth@gmail.com",
+		"url": "https://nichoth.com"
+	},
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nichoth/tap-ssc/issues"
