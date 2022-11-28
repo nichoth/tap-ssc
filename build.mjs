@@ -2,28 +2,18 @@
 // @ts-check
 import path from 'node:path'
 import fs from 'node:fs/promises'
-import esbuild from 'esbuild'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 async function main () {
     const target = path.resolve(process.argv[2])
 
     //
-    // Add `target` to package.json here, so that is is available in cli
+    // Add `target` to config.json here, so that is is available in cli
     //
-    // pkg.ssc = { target }
-    await fs.writeFile(path.join(process.cwd(), 'config.json'),
+    await fs.writeFile(path.join(__dirname, 'config.json'),
         JSON.stringify({ target }, null, 2))
-
-    // render process
-    await esbuild.build({
-        entryPoints: ['src/render/index.js'],
-        format: 'esm',
-        bundle: true,
-        keepNames: true,
-        platform: 'browser',
-        sourcemap: 'inline',
-        outfile: path.join(target, 'bundle.js')
-    })
 
     await cp('./src/index.html', target)
 }

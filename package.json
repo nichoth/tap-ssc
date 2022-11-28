@@ -19,8 +19,7 @@
     "./test-context": "./index.mjs"
   },
   "dependencies": {
-    "@socketsupply/io": "^0.1.22",
-    "esbuild": "^0.15.14"
+    "@socketsupply/io": "^0.1.22"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",

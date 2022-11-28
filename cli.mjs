@@ -5,8 +5,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import config from './config.json' assert { type: "json" }
 import { spawn } from 'node:child_process'
-import { fileURLToPath } from 'url'
 import { Transform } from 'readable-stream'
+import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
