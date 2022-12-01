@@ -59,12 +59,15 @@ esbuild.build({
     platform: 'browser'
 }).then(res => {
     const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
+
     writeStream.write(code, (err) => {
+        // done writing `test-context`, now write `stdin` to `bundle.js`
         if (err) throw err
 
         process.stdin
             .pipe(writeStream)
             .on('close', () => {
+                // have written the file, now run the tests
                 child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
                 child.stdout
                     .pipe(transformer)
