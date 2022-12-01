@@ -34,11 +34,20 @@ const transformer = new Transform({
             }, 100)
         }
 
+        if (chunk.includes('Exiting Window#0 (code=1)')) {
+            setTimeout(() => {
+                process.exit(1)
+            }, 100)
+        }
+
         this.push(chunk)
         cb()
     }
 })
 
+//
+// build listener for uncaught errors, then add it to the user's test code
+//
 esbuild.build({
     entryPoints: [path.join(__dirname, 'index.mjs')],
     bundle: true,

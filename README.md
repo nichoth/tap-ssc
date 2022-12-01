@@ -31,9 +31,6 @@ Use it as a part of `package.json` scripts:
 ```js
 // example/test/index.js
 import { test } from 'tapzero'
-// test-context listens for any uncaught errors and exits the
-// process on error
-import '@nichoth/tap-ssc/test-context'
 
 test('browser environment', t => {
     t.ok(window, 'window should exist')
