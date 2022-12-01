@@ -7,6 +7,7 @@ import config from './config.json' assert { type: "json" }
 import { spawn } from 'node:child_process'
 import { Transform } from 'readable-stream'
 import { fileURLToPath } from 'url'
+import esbuild from 'esbuild'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -38,18 +39,28 @@ const transformer = new Transform({
     }
 })
 
-fs.readFile(path.join(__dirname, 'index.mjs'), (err, file) => {
-    if (err) throw err
-    writeStream.write(file)
+esbuild.build({
+    entryPoints: [path.join(__dirname, 'index.mjs')],
+    bundle: true,
+    keepNames: true,
+    logLevel: 'silent',
+    write: false,
+    // minify: true,
+    platform: 'browser'
+}).then(res => {
+    const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
+    writeStream.write(code, (err) => {
+        if (err) throw err
 
-    process.stdin
-        .pipe(writeStream)
-        .on('close', () => {
-            child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
-            child.stdout
-                .pipe(transformer)
-                .pipe(process.stdout)
+        process.stdin
+            .pipe(writeStream)
+            .on('close', () => {
+                child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+                child.stdout
+                    .pipe(transformer)
+                    .pipe(process.stdout)
 
-            child.stderr.pipe(process.stderr)
-        })
+                child.stderr.pipe(process.stderr)
+            })
+    })
 })
