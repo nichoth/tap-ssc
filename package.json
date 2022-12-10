@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "bin": {
-    "tap-ssc": "./cli.mjs"
+    "tap-ssc": "cli.mjs"
   },
   "scripts": {
     "lint": "standardx -v",
@@ -32,11 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/nichoth/tap-ssc.git"
   },
-  "author": {
-    "name": "nichoth",
-    "email": "nichoth@gmail.com",
-    "url": "https://nichoth.com"
-  },
+  "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nichoth/tap-ssc/issues"
@@ -47,5 +43,15 @@
       "dist/*",
       "example/*"
     ]
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "ssc",
+    "tap",
+    "socket",
+    "supply",
+    "test"
+  ]
 }
