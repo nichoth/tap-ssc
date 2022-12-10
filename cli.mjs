@@ -58,6 +58,7 @@ esbuild.build({
     // minify: true,
     platform: 'browser'
 }).then(res => {
+    // https://github.com/evanw/esbuild/issues/496#issue-733010073
     const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
 
     writeStream.write(code, (err) => {
