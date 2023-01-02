@@ -1,5 +1,7 @@
 // @ts-check
 import process from '@socketsupply/io/process.js'
+import '@socketsupply/io/redirectOutput.js'
+
 const parent = typeof window === 'object' ? window : globalThis
 
 if (typeof parent?.addEventListener === 'function') {

@@ -62,7 +62,7 @@ esbuild.build({
     const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
 
     writeStream.write(code, (err) => {
-        // done writing `test-context`, now write `stdin` to `bundle.js`
+        // done writing `index.mjs`, now write `stdin` to `bundle.js`
         if (err) throw err
 
         process.stdin
