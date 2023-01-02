@@ -12,15 +12,15 @@
     "test": "cd example && rm -rf node_modules package-lock.json && npm i && npm test",
     "test-fail": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-fail",
     "test-err": "cd example && rm -rf node_modules package-lock.json && npm i --silent && npm run test-err",
-    "postinstall": "ssc build .",
+    "postinstall": "./script/post-install.sh && ssc build .",
     "postversion": "git push && git push --tags"
   },
   "exports": {
     "./test-context": "./index.mjs"
   },
   "dependencies": {
-    "@socketsupply/io": "^0.1.22",
-    "esbuild": "^0.15.16"
+    "@socketsupply/io": "github:socketsupply/io",
+    "esbuild": "0.15.16"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
