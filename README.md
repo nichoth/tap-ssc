@@ -54,17 +54,17 @@ The package binary, `./cli.js`, takes javascript that is piped to `stdin`, and w
 ## test this module
 This will use the `example` directory to install this as a dependency, then run a given test.
 
-A passing test
+### A passing test
 ```
 npm test | npx tap-arc
 ```
 
-A failing test
+### A failing test
 ```
 npm run test-fail
 ```
 
-A test that throws an error
+### A test that throws an error
 ```
 npm run test-err
 ```
