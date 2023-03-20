@@ -1,6 +1,8 @@
 // @ts-check
-import process from '@socketsupply/io/process.js'
-import '@socketsupply/io/redirectOutput.js'
+// @ts-ignore
+import process from 'socket:process'
+import './redirect-output.js'
+// import '@socketsupply/socket-api/redirectOutput.js'
 
 const parent = typeof window === 'object' ? window : globalThis
 

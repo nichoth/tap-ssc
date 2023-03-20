@@ -19,7 +19,7 @@
     "./test-context": "./index.mjs"
   },
   "dependencies": {
-    "@socketsupply/io": "github:socketsupply/io",
+    "@socketsupply/socket-api": "^0.1.22",
     "esbuild": "0.15.16"
   },
   "devDependencies": {

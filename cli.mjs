@@ -52,6 +52,7 @@ esbuild.build({
     entryPoints: [path.join(__dirname, 'index.mjs')],
     bundle: true,
     keepNames: true,
+    external: ['socket:*'],
     logLevel: 'silent',
     // found this via [source code](https://github.com/evanw/esbuild/blob/a7eb7891ec1aeb7f7967ae38d72ab96518913e62/lib/shared/types.ts#L212)
     write: false,
