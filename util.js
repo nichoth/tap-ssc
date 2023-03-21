@@ -356,7 +356,8 @@ export function inspect (value, options) {
                 for (const key of hidden) {
                     keys.add(key)
                 }
-            } catch (errr) {
+            } catch (err) {
+                // eslint-disable-next-line
                 void err
             }
         }
@@ -545,12 +546,14 @@ export function inspect (value, options) {
         try {
             descriptor.value = value[key]
         } catch (err) {
+            // eslint-disable-next-line
             void err
         }
 
         try {
             Object.assign(descriptor, Object.getOwnPropertyDescriptor(value, key))
         } catch (err) {
+            // eslint-disable-next-line
             void err
         }
 
@@ -693,6 +696,7 @@ export function parseJSON (string) {
         try {
             return JSON.parse(String(string))
         } catch (err) {
+            // eslint-disable-next-line
             void err
         }
     }

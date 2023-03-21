@@ -7,6 +7,8 @@
 
 import { Buffer } from './buffer.js'
 
+import * as exports from './crypto.js'
+
 /**
  * WebCrypto API
  * @see {https://developer.mozilla.org/en-US/docs/Web/API/Crypto}
@@ -20,12 +22,12 @@ export const webcrypto = globalThis.crypto?.webcrypto ?? globalThis.crypto
  * @return {TypedArray}
  */
 export function getRandomValues (...args) {
-  if (typeof webcrypto?.getRandomValues === 'function') {
-    return webcrypto?.getRandomValues(...args)
-  }
+    if (typeof webcrypto?.getRandomValues === 'function') {
+        return webcrypto?.getRandomValues(...args)
+    }
 
-  console.warn('Missing implementation for window.crypto.getRandomValues()')
-  return null
+    console.warn('Missing implementation for window.crypto.getRandomValues()')
+    return null
 }
 
 /**
@@ -49,25 +51,25 @@ export const MAX_RANDOM_BYTES_PAGES = MAX_RANDOM_BYTES / RANDOM_BYTES_QUOTA
  * @returns {Buffer} - A promise that resolves with an instance of io.Buffer with random bytes.
  */
 export function randomBytes (size) {
-  const buffers = []
+    const buffers = []
 
-  if (size < 0 || size >= MAX_RANDOM_BYTES || !Number.isInteger(size)) {
-    throw Object.assign(new RangeError(
-      `The value of "size" is out of range. It must be >= 0 && <= ${max}. ` +
+    if (size < 0 || size >= MAX_RANDOM_BYTES || !Number.isInteger(size)) {
+        throw Object.assign(new RangeError(
+            `The value of "size" is out of range. It must be >= 0 && <= ${max}. ` +
       `Received ${size}`
-    ), {
-      code: 'ERR_OUT_OF_RANGE'
-    })
-  }
+        ), {
+            code: 'ERR_OUT_OF_RANGE'
+        })
+    }
 
-  do {
-    const length = size > RANDOM_BYTES_QUOTA ? RANDOM_BYTES_QUOTA : size
-    const bytes = getRandomValues(new Int8Array(length))
-    buffers.push(Buffer.from(bytes))
-    size = Math.max(0, size - RANDOM_BYTES_QUOTA)
-  } while (size > 0);
+    do {
+        const length = size > RANDOM_BYTES_QUOTA ? RANDOM_BYTES_QUOTA : size
+        const bytes = getRandomValues(new Int8Array(length))
+        buffers.push(Buffer.from(bytes))
+        size = Math.max(0, size - RANDOM_BYTES_QUOTA)
+    } while (size > 0)
 
-  return Buffer.concat(buffers)
+    return Buffer.concat(buffers)
 }
 
 /**
@@ -76,8 +78,6 @@ export function randomBytes (size) {
  * @returns {Promise<Buffer>} - A promise that resolves with an instance of io.Buffer with the hash.
  */
 export async function createDigest (algorithm, buf) {
-  return Buffer.from(await webcrypto.subtle.digest(algorithm, buf))
+    return Buffer.from(await webcrypto.subtle.digest(algorithm, buf))
 }
-
-import * as exports from './crypto.js'
 export default exports

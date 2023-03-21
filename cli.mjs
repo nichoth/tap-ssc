@@ -57,7 +57,7 @@ esbuild.build({
     // found this via [source code](https://github.com/evanw/esbuild/blob/a7eb7891ec1aeb7f7967ae38d72ab96518913e62/lib/shared/types.ts#L212)
     write: false,
     // minify: true,
-    platform: 'browser'
+    platform: 'node'
 }).then(res => {
     // https://github.com/evanw/esbuild/issues/496#issue-733010073
     const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
