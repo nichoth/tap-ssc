@@ -7,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 async function main () {
-    console.log('***process.argv***', process.argv)
     const target = path.resolve(process.argv[2])
 
     //

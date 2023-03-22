@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "esbuild --bundle test/index.js | tap-ssc",
+        "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc",
         "test-fail": "esbuild --bundle test/fail.js | tap-ssc",
         "test-err": "esbuild --bundle test/error.js | tap-ssc"
     },
