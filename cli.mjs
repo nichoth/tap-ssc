@@ -73,7 +73,6 @@ esbuild.build({
             .on('close', () => {
                 // have written the file, now run the tests
                 child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
-                // child = spawn('ssc', ['run', '.'], { cwd: __dirname })
                 child.stdout
                     .pipe(transformer)
                     .pipe(process.stdout)
