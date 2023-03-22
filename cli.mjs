@@ -53,6 +53,7 @@ esbuild.build({
     bundle: true,
     keepNames: true,
     external: ['socket:*'],
+    format: 'esm',
     logLevel: 'silent',
     // format: 'esm',
     // found this via [source code](https://github.com/evanw/esbuild/blob/a7eb7891ec1aeb7f7967ae38d72ab96518913e62/lib/shared/types.ts#L212)
@@ -72,6 +73,7 @@ esbuild.build({
             .on('close', () => {
                 // have written the file, now run the tests
                 child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+                // child = spawn('ssc', ['run', '.'], { cwd: __dirname })
                 child.stdout
                     .pipe(transformer)
                     .pipe(process.stdout)
