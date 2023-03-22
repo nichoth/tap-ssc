@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@socketsupply/socket": "^0.0.33",
-    "@socketsupply/socket-api": "^0.1.22",
     "esbuild": "0.15.16"
   },
   "devDependencies": {
