@@ -20,8 +20,7 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            child.stdin.pause()
-            let n = 1
+            let n = 0
             // @TODO -- why is it wonky killing the child process?
             while (n < 5) {
                 process.kill(child.pid + n)
