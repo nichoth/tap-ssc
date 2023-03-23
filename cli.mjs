@@ -20,8 +20,14 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            // @TODO -- is there a nicer way than `child.pid + 1` to exit?
-            process.kill(child.pid + 1)
+            child.stdin.pause()
+            let n = 1
+            // @TODO -- why is it wonky killing the child process?
+            while (n < 5) {
+                process.kill(child.pid + n)
+                n++
+            }
+
             setTimeout(() => {
                 process.exit(0)
             }, 100)

@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc",
+        "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc | tap-arc",
         "test-fail": "esbuild --bundle test/fail.js | tap-ssc",
         "test-err": "esbuild --bundle test/error.js | tap-ssc"
     },
@@ -8,6 +8,7 @@
         "@nichoth/tap-ssc": "../",
         "@socketsupply/socket-api": "^0.1.22",
         "esbuild": "^0.15.16",
+        "tap-arc": "^0.3.5",
         "tapzero": "^0.6.1"
     }
 }
