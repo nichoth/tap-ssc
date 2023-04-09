@@ -1,7 +1,7 @@
 # tap ssc
 Run tests in a browser environment from the command line.
 
-This depends on having the [`ssc` command](https://sockets.sh/) available in your shell. `ssc` will be automatically installed if it is not available in your shell.
+This depends on having the [`ssc` command](https://sockets.sh/) available in your shell. `ssc` will be automatically installed if it is not in your shell.
 
 The interface is inspired by [tape-run](https://www.npmjs.com/package/tape-run)
 
