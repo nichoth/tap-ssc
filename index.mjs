@@ -1,8 +1,12 @@
 // @ts-check
-// @ts-ignore
 import process from 'socket:process'
+import fs from 'socket:fs/promises'
 
 const parent = typeof window === 'object' ? window : globalThis
+
+window.addEventListener('DOMContentLoaded', async () => {
+    await fs.readFile('index.html')
+})
 
 if (typeof parent?.addEventListener === 'function') {
     parent.addEventListener('error', onerror)
