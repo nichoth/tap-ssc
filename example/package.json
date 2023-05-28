@@ -2,7 +2,8 @@
     "scripts": {
         "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc | tap-arc",
         "test-fail": "esbuild --bundle test/fail.js | tap-ssc",
-        "test-err": "esbuild --bundle test/error.js | tap-ssc"
+        "test-err": "esbuild --bundle test/error.js | tap-ssc",
+        "test-html": "esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc"
     },
     "dependencies": {
         "@nichoth/tap-ssc": "../",

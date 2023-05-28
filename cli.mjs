@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // @ts-check
 
-import fs from 'node:fs' // 'node:fs/promises'
+import fsStreamable from 'node:fs' // 'node:fs/promises'
+import fs from 'node:fs/promises'
 import path from 'node:path'
 import config from './config.json' assert { type: "json" }
 import { spawn } from 'node:child_process'
@@ -12,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const target = path.resolve(path.join(config.target, 'bundle.js'))
-const writeStream = fs.createWriteStream(target)
+const writeStream = fsStreamable.createWriteStream(target)
 
 let child
 
@@ -50,6 +51,24 @@ const transformer = new Transform({
     }
 })
 
+const i = process.argv.findIndex(arg => arg.includes('--html'))
+const html = process.argv[i]
+if (html) {
+    // need a custom html file, so write the html to target
+    // parse the file name
+    let filename
+    if (html.includes('=')) {
+        filename = html.split('=')[1]
+    } else {
+        filename = process.argv[i + 1]
+    }
+
+    await cp(
+        path.join(process.cwd(), filename),
+        path.join(path.join(config.target, 'index.html'))
+    )
+}
+
 //
 // build listener for uncaught errors, then add it to the user's test code
 //
@@ -83,3 +102,11 @@ esbuild.build({
             })
     })
 })
+
+function cp (a, b) {
+    return fs.cp(
+        path.resolve(a),
+        path.resolve(b),
+        { recursive: true, force: true }
+    )
+}
