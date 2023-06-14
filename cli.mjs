@@ -4,7 +4,7 @@
 import fsStreamable from 'node:fs' // 'node:fs/promises'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import config from './config.json' assert { type: "json" }
+import config from './config.json' assert { type: 'json' }
 import { spawn } from 'node:child_process'
 import { Transform } from 'readable-stream'
 import { fileURLToPath } from 'url'
