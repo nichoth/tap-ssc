@@ -13,7 +13,8 @@
     "test-html": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-html",
     "test-fail": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-fail",
     "test-err": "cd example && rm -rf node_modules package-lock.json && npm i --silent && npm run test-err",
-    "postinstall": "./script/post-install.sh && ssc build .",
+    "postinstall": "ssc build .",
+    "//prepare": "ssc build .",
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {

@@ -21,12 +21,14 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            let n = 0
+            // let n = 0
             // @TODO -- why is it wonky killing the child process?
-            while (n < 5) {
-                process.kill(child.pid + n)
-                n++
-            }
+            // while (n < 5) {
+            //     process.kill(child.pid + n)
+            //     n++
+            // }
+            console.log('**pid**', child.pid)
+            process.kill(child.pid)
 
             setTimeout(() => {
                 process.exit(0)
@@ -79,7 +81,7 @@ esbuild.build({
     external: ['socket:*'],
     format: 'esm',
     logLevel: 'silent',
-    // found this via [source code](https://github.com/evanw/esbuild/blob/a7eb7891ec1aeb7f7967ae38d72ab96518913e62/lib/shared/types.ts#L212)
+    // see [source code](https://github.com/evanw/esbuild/blob/a7eb7891ec1aeb7f7967ae38d72ab96518913e62/lib/shared/types.ts#L212)
     write: false
 }).then(res => {
     // https://github.com/evanw/esbuild/issues/496#issue-733010073
@@ -93,7 +95,10 @@ esbuild.build({
             .pipe(writeStream)
             .on('close', () => {
                 // have written the file, now run the tests
-                child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+                // child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+                child = spawn('npx', ['ssc', 'run', '--headless'], {
+                    cwd: __dirname
+                })
                 child.stdout
                     .pipe(transformer)
                     .pipe(process.stdout)
