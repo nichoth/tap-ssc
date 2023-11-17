@@ -27,7 +27,10 @@ const transformer = new Transform({
             //     process.kill(child.pid + n)
             //     n++
             // }
+
+            console.log('ok ok ok')
             console.log('**pid**', child.pid)
+
             process.kill(child.pid)
 
             setTimeout(() => {
@@ -87,15 +90,16 @@ esbuild.build({
     // https://github.com/evanw/esbuild/issues/496#issue-733010073
     const code = new TextDecoder('utf-8').decode(res.outputFiles[0].contents)
 
+    /**
+     * done writing `index.mjs`, now write `stdin` to `bundle.js`
+     */
     writeStream.write(code, (err) => {
-        // done writing `index.mjs`, now write `stdin` to `bundle.js`
         if (err) throw err
 
         process.stdin
             .pipe(writeStream)
             .on('close', () => {
                 // have written the file, now run the tests
-                // child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
                 child = spawn('npx', ['ssc', 'run', '--headless'], {
                     cwd: __dirname
                 })
