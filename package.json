@@ -17,8 +17,8 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
-    "@socketsupply/socket": "^0.3.3",
-    "esbuild": "0.15.16"
+    "@socketsupply/socket": "^0.4.0",
+    "esbuild": "0.19.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",

@@ -5,7 +5,7 @@
     "noEmit": true,
     "module": "esnext",
     "strict": false,
-    "moduleResolution": "node16",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true
   },
   "exclude": ["node_modules"]
