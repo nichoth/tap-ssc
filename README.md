@@ -59,7 +59,7 @@ In the html, be sure to include a script tag pointing at `bundle.js`:
 ## how does this work?
 We build an `ssc` binary [once after you install this package](./package.json#L16)
 
-The `ssc build` script calls [./build.mjs](https://github.com/nichoth/tap-ssc/blob/main/build.mjs), which builds the ssc binary with an html file that links to `bundle.js`.
+The `ssc build` script calls [./build.mjs](./build.mjs), which builds the ssc binary with an html file that links to `bundle.js`.
 
 The package binary, `./cli.js`, takes javascript that is piped to `stdin`, and writes it to a file at the right location -- `target + /bundle.js`. Then it runs the ssc binary and pipes the output to `stdout`.
 

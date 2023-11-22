@@ -12,6 +12,8 @@ import esbuild from 'esbuild'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+console.log('**dirname**', __dirname)
+
 const target = path.resolve(path.join(config.target, 'bundle.js'))
 const writeStream = fsStreamable.createWriteStream(target)
 
@@ -93,7 +95,7 @@ esbuild.build({
             .pipe(writeStream)
             .on('close', () => {
                 // have written the file, now run the tests
-                child = spawn('ssc', ['run', '--headless', '.'], { cwd: __dirname })
+                child = spawn('npx', ['ssc', 'run'], { cwd: __dirname })
                 child.stdout
                     .pipe(transformer)
                     .pipe(process.stdout)
