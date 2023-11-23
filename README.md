@@ -56,7 +56,7 @@ Use command line argument `--html=filename.html`
 esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc
 ```
 
-In the html, be sure to include a script tag pointing at `bundle.js`:
+In your html, be sure to include a script tag pointing at `bundle.js`:
 ```html
     <script charset="utf-8" src="bundle.js" type="module"></script>
 ```
