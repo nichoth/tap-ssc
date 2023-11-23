@@ -8,6 +8,9 @@ The interface is inspired by [tape-run](https://www.npmjs.com/package/tape-run).
 npm i -D @nichoth/tap-ssc
 ```
 
+[!NOTE]  
+There is some flakiness with [@socketsupply/socket](https://github.com/socketsupply/socket) & headless mode.
+
 ## use
 Bundle your client side JS, then pipe it into this tool, which is installed as the `tap-ssc` command.
 

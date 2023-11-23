@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // @ts-check
 
-import fsStreamable from 'node:fs' // 'node:fs/promises'
+import fsStreamable from 'node:fs'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import config from './config.json' assert { type: 'json' }
 import { spawn } from 'node:child_process'
 import { Transform } from 'readable-stream'
 import { fileURLToPath } from 'url'
+import kill from '@nichoth/tree-kill'
 import esbuild from 'esbuild'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,13 +22,17 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
+            console.log('**child pid**', child.pid)
+
             // let n = 0
             // @TODO -- why is it wonky killing the child process?
             // while (n < 5) {
             //     process.kill(child.pid + n)
             //     n++
             // }
-            process.kill(child.pid)
+
+            // process.kill(child.pid)
+            kill(child.pid)
 
             setTimeout(() => {
                 process.exit(0)

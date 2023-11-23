@@ -17,6 +17,7 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
+    "@nichoth/tree-kill": "^1.2.2",
     "@socketsupply/socket": "^0.4.0",
     "esbuild": "0.19.5"
   },
@@ -51,6 +52,7 @@
     "tap",
     "socket",
     "supply",
-    "test"
+    "test",
+    "browser"
   ]
 }
