@@ -8,6 +8,8 @@ Run tests in a browser environment from the command line.
 
 The interface is inspired by [tape-run](https://www.npmjs.com/package/tape-run). Just pipe some JS into the `tap-ssc` command, and your tests will run in a browser environment.
 
+Instead of [electron](https://www.electronjs.org/), a dependency of `tape-run`, this uses [@socketsupply/socket](https://socketsupply.co/) to create a browser-like environment.
+
 ## install
 ```
 npm i -D @nichoth/tap-ssc
@@ -63,11 +65,8 @@ In the html, be sure to include a script tag pointing at `bundle.js`:
     <script charset="utf-8" src="bundle.js" type="module"></script>
 ```
 
-
 ## how does this work?
 We build an `ssc` binary [once after you install this package](./package.json#L16)
-
-The `ssc build` script calls [./build.mjs](./build.mjs), which builds the ssc binary with an html file that links to `bundle.js`.
 
 The package binary, `./cli.js`, takes javascript that is piped to `stdin`, and writes it to a file at the right location -- `target + /bundle.js`. Then it runs the ssc binary and pipes the output to `stdout`.
 
