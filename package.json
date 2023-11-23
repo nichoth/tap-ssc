@@ -23,6 +23,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@nichoth/tapzero": "^0.8.4",
     "standardx": "^7.0.0",
     "tap-arc": "^0.3.5"
   },

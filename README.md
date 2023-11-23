@@ -32,7 +32,7 @@ npx esbuild --bundle test/index.js | npx tap-ssc
 ## example
 ```js
 // example/test/index.js
-import { test } from 'tapzero'
+import { test } from '@nichoth/tapzero'
 
 test('browser environment', t => {
     t.ok(window, 'window should exist')
