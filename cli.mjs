@@ -24,14 +24,6 @@ const transformer = new Transform({
         if (chunk.includes('# ok')) {
             console.log('**child pid**', child.pid)
 
-            // let n = 0
-            // @TODO -- why is it wonky killing the child process?
-            // while (n < 5) {
-            //     process.kill(child.pid + n)
-            //     n++
-            // }
-
-            // process.kill(child.pid)
             kill(child.pid)
 
             setTimeout(() => {
