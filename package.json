@@ -2,7 +2,7 @@
   "name": "@nichoth/tap-ssc",
   "type": "module",
   "description": "Run tests in a browser environment from the command line",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "main": "index.js",
   "bin": {
     "tap-ssc": "cli.mjs"
