@@ -17,7 +17,7 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
-    "@nichoth/tree-kill": "^1.2.2",
+    "@nichoth/tree-kill": "^1.2.3",
     "@socketsupply/socket": "^0.4.0",
     "esbuild": "0.19.5"
   },
@@ -26,14 +26,14 @@
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@nichoth/tapzero": "^0.8.4",
     "standardx": "^7.0.0",
-    "tap-arc": "^0.3.5"
+    "tap-arc": "^1.2.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nichoth/tap-ssc.git"
   },
   "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nichoth/tap-ssc/issues"
   },

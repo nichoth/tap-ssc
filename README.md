@@ -1,4 +1,9 @@
 # tap ssc
+![tests](https://github.com/nichoth/debug/actions/workflows/nodejs.yml/badge.svg)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@nichoth/tap-ssc)](https://socket.dev/npm/package/@nichoth/tap-ssc)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
+
+
 Run tests in a browser environment from the command line.
 
 The interface is inspired by [tape-run](https://www.npmjs.com/package/tape-run). Just pipe some JS into the `tap-ssc` command, and your tests will run in a browser environment.
