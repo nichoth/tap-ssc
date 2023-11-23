@@ -9,7 +9,6 @@
   },
   "scripts": {
     "lint": "standardx -v",
-    "build": "esbuild --bundle \"--external:socket:*\"",
     "test": "cd example && rm -rf node_modules package-lock.json && npm i && npm test",
     "test-html": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-html",
     "test-fail": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-fail",

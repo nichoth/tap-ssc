@@ -12,8 +12,6 @@ import esbuild from 'esbuild'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-console.log('**dirname**', __dirname)
-
 const target = path.resolve(path.join(config.target, 'bundle.js'))
 const writeStream = fsStreamable.createWriteStream(target)
 
@@ -23,12 +21,13 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            let n = 0
+            // let n = 0
             // @TODO -- why is it wonky killing the child process?
-            while (n < 5) {
-                process.kill(child.pid + n)
-                n++
-            }
+            // while (n < 5) {
+            //     process.kill(child.pid + n)
+            //     n++
+            // }
+            process.kill(child.pid)
 
             setTimeout(() => {
                 process.exit(0)
@@ -95,7 +94,10 @@ esbuild.build({
             .pipe(writeStream)
             .on('close', () => {
                 // have written the file, now run the tests
-                child = spawn('npx', ['ssc', 'run'], { cwd: __dirname })
+                child = spawn('npx', ['ssc', 'run'], {
+                    cwd: __dirname
+                })
+
                 child.stdout
                     .pipe(transformer)
                     .pipe(process.stdout)

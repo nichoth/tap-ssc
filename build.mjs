@@ -6,12 +6,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-console.log('*********ropcess', process.argv)
-
 async function main () {
     const target = path.resolve(process.argv[2])
-
-    console.log('**target**', target)
 
     /**
      * Add `target` to config.json here, so that is is available in cli
