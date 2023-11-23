@@ -94,7 +94,7 @@ esbuild.build({
             .pipe(writeStream)
             .on('close', () => {
                 // have written the file, now run the tests
-                child = spawn('npx', ['ssc', 'run'], {
+                child = spawn('npx', ['ssc', 'run', '--headless'], {
                     cwd: __dirname
                 })
 
