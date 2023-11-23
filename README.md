@@ -20,10 +20,6 @@ Bundle your client side JS, then pipe it into this tool, which is installed as t
 
 Your tests will be running in a browser environment, but all tap output will go to the terminal.
 
-```
-esbuild --bundle test/index.js | tap-ssc
-```
-
 Use it as a part of `package.json` scripts:
 ```js
 "scripts": {
