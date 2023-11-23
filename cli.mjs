@@ -22,8 +22,6 @@ const transformer = new Transform({
     transform (_chunk, _, cb) {
         const chunk = _chunk.toString()
         if (chunk.includes('# ok')) {
-            console.log('**child pid**', child.pid)
-
             kill(child.pid)
 
             setTimeout(() => {
