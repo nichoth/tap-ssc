@@ -50,10 +50,10 @@ npx esbuild --bundle test/index.js | npx tap-ssc
 see [this example](https://github.com/nichoth/tap-ssc/blob/main/example/package.json#L2)
 
 ### pass in your own html file
-Use command line argument `--html=filename.html`
-
 > [!NOTE]  
 > This is in progress.
+
+Use command line argument `--html=filename.html`
 
 ```
 esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc
