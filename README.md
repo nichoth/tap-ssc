@@ -52,6 +52,9 @@ see [this example](https://github.com/nichoth/tap-ssc/blob/main/example/package.
 ### pass in your own html file
 Use command line argument `--html=filename.html`
 
+> [!NOTE]  
+> This is in progress.
+
 ```
 esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc
 ```
@@ -59,6 +62,19 @@ esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=t
 In your html, be sure to include a script tag pointing at `bundle.js`:
 ```html
     <script charset="utf-8" src="bundle.js" type="module"></script>
+```
+
+This is useful if your application code depends on another file that you are linking to via HTML, eg
+
+```html
+<head>
+    <meta charset="UTF-8">
+    <title>tests</title>
+    <script src="https://example.com/my-js-dependency/dist/index.umd.min.js"></script>
+</head>
+<body>
+    <script src="bundle.js"></script>
+</body>
 ```
 
 ## how does this work?
