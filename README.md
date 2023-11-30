@@ -61,7 +61,7 @@ esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=t
 
 In your html, be sure to include a script tag pointing at `bundle.js`:
 ```html
-    <script charset="utf-8" src="bundle.js" type="module"></script>
+<script charset="utf-8" src="bundle.js" type="module"></script>
 ```
 
 This is useful if your application code depends on another file that you are linking to via HTML, eg
