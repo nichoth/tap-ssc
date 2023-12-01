@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // @ts-check
-
 import fsStreamable from 'node:fs'
+import process from 'node:process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import config from './config.json' assert { type: 'json' }
@@ -91,6 +91,11 @@ esbuild.build({
                 // have written the file, now run the tests
                 child = spawn('npx', ['ssc', 'run', '--headless'], {
                     cwd: __dirname
+                })
+
+                child.on('error', (err) => {
+                    console.log('oh no...', err)
+                    process.exit(1)
                 })
 
                 child.stdout
