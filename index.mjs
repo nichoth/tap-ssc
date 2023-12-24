@@ -10,7 +10,8 @@ if (typeof parent?.addEventListener === 'function') {
 
 // fail on uncaught errors
 function onerror (err) {
-    console.log('got errrrrrrrrrrr', err)
-    console.error(err.stack || err.reason || err.message || err)
-    process.exit(1)
+    setTimeout(() => {
+        console.error(err.stack || err.reason || err.message || err)
+        process.exit(1)
+    }, 1024) // give app time to print TAP output
 }
