@@ -1,6 +1,7 @@
 # tap ssc
-![tests](https://github.com/nichoth/debug/actions/workflows/nodejs.yml/badge.svg)
+![tests](https://github.com/nichoth/tap-ssc/actions/workflows/nodejs.yml/badge.svg)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/@nichoth/tap-ssc)](https://socket.dev/npm/package/@nichoth/tap-ssc)
+[![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen)](LICENSE)
 
 
