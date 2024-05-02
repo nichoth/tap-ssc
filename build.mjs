@@ -9,8 +9,6 @@ const __dirname = path.dirname(__filename)
 async function main () {
     const target = path.resolve(process.env.PREFIX)
 
-    console.log('target...', target)
-
     /**
      * Add `target` to config.json here, so that is is available in cli
      */

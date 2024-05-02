@@ -4,5 +4,5 @@ bundle.js
 package-lock.json
 dist
 example/package-lock.json
-
 build
+config.json
