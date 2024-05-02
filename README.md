@@ -12,7 +12,7 @@ The interface is inspired by [tape-run](https://www.npmjs.com/package/tape-run).
 Instead of [electron](https://www.electronjs.org/), a dependency of `tape-run`, this uses [@socketsupply/socket](https://socketsupply.co/) to create a browser-like environment.
 
 ## install
-```
+```sh
 npm i -D @nichoth/tap-ssc
 ```
 
@@ -44,7 +44,7 @@ test('browser environment', t => {
 ```
 
 Then in the terminal:
-```
+```sh
 npx esbuild --bundle test/index.js | npx tap-ssc
 ```
 
@@ -56,7 +56,7 @@ see [this example](https://github.com/nichoth/tap-ssc/blob/main/example/package.
 
 Use command line argument `--html=filename.html`
 
-```
+```sh
 esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc
 ```
 
@@ -87,16 +87,16 @@ The package binary, `./cli.js`, takes javascript that is piped to `stdin`, and w
 This will use the `example` directory to install this as a dependency, then run a given test.
 
 ### A passing test
-```
+```sh
 npm test | npx tap-arc
 ```
 
 ### A failing test
-```
+```sh
 npm run test-fail
 ```
 
 ### A test that throws an error
-```
+```sh
 npm run test-err
 ```
