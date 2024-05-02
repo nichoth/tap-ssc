@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc | tap-arc",
+        "test": "esbuild --bundle --platform=browser --format=esm test/index.js | tap-ssc | tap-spec",
         "test-fail": "esbuild --bundle test/fail.js | tap-ssc",
         "test-err": "esbuild --bundle test/error.js | tap-ssc",
         "test-html": "esbuild --bundle --platform=browser --format=esm test/html.js | tap-ssc --html=test.html | tap-arc"
@@ -8,7 +8,7 @@
     "dependencies": {
         "@nichoth/tap-ssc": "../",
         "@nichoth/tapzero": "^0.8.4",
-        "esbuild": "^0.19.5",
-        "tap-arc": "^0.3.5"
+        "esbuild": "^0.20.2",
+        "tap-spec": "^5.0.0"
     }
 }

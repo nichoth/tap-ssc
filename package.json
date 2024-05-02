@@ -8,26 +8,27 @@
     "tap-ssc": "cli.mjs"
   },
   "scripts": {
-    "lint": "standardx -v",
+    "lint": "eslint \"./**/*.{ts,js}\"",
     "test": "cd example && rm -rf node_modules package-lock.json && npm i && npm test",
     "test-html": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-html",
     "test-fail": "cd example && rm -rf node_modules package-lock.json && npm i && npm run test-fail",
     "test-err": "cd example && rm -rf node_modules package-lock.json && npm i --silent && npm run test-err",
-    "postinstall": "ssc build",
+    "//postinstall": "ssc build",
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
     "@nichoth/tree-kill": "^1.2.3",
-    "@socketsupply/socket": "^0.4.0",
-    "esbuild": "0.19.5",
+    "@socketsupply/socket": "^0.5.4",
+    "esbuild": "^0.20.2",
     "readable-stream": "^4.4.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@nichoth/tapzero": "^0.8.4",
-    "standardx": "^7.0.0",
-    "tap-arc": "^1.2.2"
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "tap-spec": "^5.0.0"
   },
   "repository": {
     "type": "git",

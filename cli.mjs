@@ -30,7 +30,7 @@ const transformer = new Transform({
         }
 
         if (chunk.includes('# fail ')) {
-            process.kill(child.pid + 1)
+            kill(child.pid)
             setTimeout(() => {
                 process.exit(1)
             }, 100)
