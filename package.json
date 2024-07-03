@@ -19,7 +19,7 @@
   "dependencies": {
     "@nichoth/tree-kill": "^1.2.3",
     "@socketsupply/socket": "^0.5.4",
-    "esbuild": "^0.22.0",
+    "esbuild": "^0.23.0",
     "readable-stream": "^4.4.2"
   },
   "devDependencies": {
